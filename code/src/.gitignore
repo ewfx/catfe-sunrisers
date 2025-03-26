@@ -1,0 +1,9 @@
+/venv
+.env
+
+TestcaseExecutor/__pycache__
+VertexAI/__pycache__
+TestcaseGenerator/__pycache__
+TestcaseReportGenerator/__pycache__
+ContextCreator/__pycache__
+DataExtractor/__pycache__

@@ -1,0 +1,71 @@
+## Refined Functional Context for LLM Test Case Generation
+
+**API Base URL:** `https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app`
+
+**Endpoints:**
+
+* **POST /balance:**
+    * **Request:** `{ "userId": <user_id>}` (integer)
+    * **Response:**
+        * 200 OK: `{ "message": "Your current bank balance is <user.currentBalance>"}`
+        * 400 Bad Request: `{ "error": "User ID is required" }`
+        * 404 Not Found: `{ "error": "User not found" }`
+        * 500 Internal Server Error: `{ "error": "Internal server error" }`
+
+* **POST /transactions:**
+    * **Request:** `{ "userId": <user_id>}` (integer)
+    * **Response:**
+        * 200 OK: `{ "message": [...] }` (Array of up to 5 transaction objects)  Transaction objects have the following structure:
+            ```json
+            {
+                "transactionID": "<transaction_id>",
+                "senderID": "<sender_id>",
+                "receiverId": "<receiver_id>",
+                "amount": "<amount>"  // Signed amount (negative if user is sender)
+            }
+            ```
+        * 400 Bad Request: `{ "error": "User ID is required" }`
+        * 404 Not Found: `{ "error": "User not found" }`
+        * 500 Internal Server Error: `{ "error": "Error reading user data" }` or `{ "error": "Internal server error" }`
+
+* **POST /bill:**
+    * **Request:** `{ "userId": <user_id>}` (integer)
+    * **Response:**
+        * 200 OK: `{ "message": "Your next credit card bill of <amount> is due on <dueDate>"}`  `<amount>` is a number, `<dueDate>` is YYYY-MM-DD.
+        * 400 Bad Request: `{ "error": "User ID is required" }`
+        * 404 Not Found: `{ "error": "No upcoming credit card bill found" }`
+        * 500 Internal Server Error: `{ "error": "Error reading credit card bill data" }`
+
+
+**Data Storage:**
+
+* `transactions.json`: Stores transaction data (structure inferred from `/transactions` response).
+* `bills.json`: Stores credit card bill data.  Array of objects with the following structure:
+    ```json
+    {
+        "userId": <user_id>, // Integer
+        "amount": <amount>, // Number
+        "dueDate": "<dueDate>" // Date string YYYY-MM-DD
+    }
+    ```
+    Sample data included in `bills.json` now contains multiple entries for various users with bills due on different dates.
+
+
+**Important Considerations for Test Case Generation:**
+
+* **User ID Validation:** Test with valid, invalid (empty string, non-numeric, negative), and non-existent user IDs across all endpoints.  Test cases should include scenarios where a user ID exists in one data file but not others.
+
+* **/transactions Edge Cases:** Test with 0, <5, 5, and >5 transactions to verify the 5-transaction limit.
+
+* **/bill Edge Cases:**
+    * Test with users having 0, 1, and multiple bills. Verify bill sorting by `dueDate` (ascending).
+    * Thoroughly test date parsing of `dueDate` (YYYY-MM-DD), including past and future dates.
+    * Handle empty and invalid (malformed JSON) `bills.json` files.  Consider edge cases where `dueDate` is malformed or missing.
+
+* **Error Handling:** Verify all error responses and messages for all endpoints.
+
+* **Data Type Validation:**  Validate response data types: numeric string for amounts, string for messages, date string (YYYY-MM-DD) for `dueDate`.  The request `userId` must be an integer.
+
+* **Amount Sign in /transactions:** Verify the sign of the `amount` field.  Positive for received amounts, negative for sent amounts.
+
+* **Bill Sorting:** The `/bill` endpoint should return the bill with the nearest upcoming `dueDate`.  Test cases should verify this sorting behavior.

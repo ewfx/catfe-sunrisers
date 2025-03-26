@@ -1,0 +1,56 @@
+[
+    {
+        "endpoint": "/balance",
+        "method": "POST",
+        "body": "{\"userId\": 1}",
+        "expectedOutput": "{\"message\": \"Your current bank balance is 2500.75\"}"
+    },
+    {
+        "endpoint": "/balance",
+        "method": "POST",
+        "body": "{\"userId\": \"invalid\"}",
+        "expectedOutput": "{\"error\": \"User ID is required\"}"
+    },
+    {
+        "endpoint": "/balance",
+        "method": "POST",
+        "body": "{\"userId\": 999}",
+        "expectedOutput": "{\"error\": \"User not found\"}"
+    },
+    {
+        "endpoint": "/transactions",
+        "method": "POST",
+        "body": "{\"userId\": 12}",
+        "expectedOutput": "{\"message\": [{\"transactionID\": 1, \"senderID\": 12, \"receiverId\": 45, \"amount\": -250.75}, {\"transactionID\": 5, \"senderID\": 90, \"receiverId\": 12, \"amount\": 300.0}, {\"transactionID\": 10, \"senderID\": 89, \"receiverId\": 12, \"amount\": 400.0}]}"
+    },
+    {
+        "endpoint": "/transactions",
+        "method": "POST",
+        "body": "{}",
+        "expectedOutput": "{\"error\": \"User ID is required\"}"
+    },
+    {
+        "endpoint": "/transactions",
+        "method": "POST",
+        "body": "{\"userId\": 101}",
+        "expectedOutput": "{\"error\": \"User not found\"}"
+    },
+    {
+        "endpoint": "/bill",
+        "method": "POST",
+        "body": "{\"userId\": 1}",
+        "expectedOutput": "{\"message\": \"Your next credit card bill of <amount> is due on <dueDate>\"}"
+    },
+    {
+        "endpoint": "/bill",
+        "method": "POST",
+        "body": "{\"userId\": \"abc\"}",
+        "expectedOutput": "{\"error\": \"User ID is required\"}"
+    },
+    {
+        "endpoint": "/bill",
+        "method": "POST",
+        "body": "{\"userId\": 1}",
+        "expectedOutput": "{\"error\": \"No upcoming credit card bill found\"}"
+    }
+]

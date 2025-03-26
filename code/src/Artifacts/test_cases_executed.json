@@ -1,0 +1,83 @@
+[
+    {
+        "endpoint": "/balance",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/balance",
+        "body": "{\"userId\": \"1\"}",
+        "expectedOutput": "{\"message\": \"Your current bank balance is 2500.75\"}",
+        "receivedOutput": "{\"message\": \"Your current bank balance is 2500.75\"}",
+        "status": "PASS"
+    },
+    {
+        "endpoint": "/balance",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/balance",
+        "body": "{\"userId\": \"\"}",
+        "expectedOutput": "{\"error\": \"User ID is required\"}",
+        "receivedOutput": "{\"error\": \"User ID is required\"}",
+        "status": "PASS"
+    },
+    {
+        "endpoint": "/balance",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/balance",
+        "body": "{\"userId\": \"101\"}",
+        "expectedOutput": "{\"error\": \"User not found\"}",
+        "receivedOutput": "{\"error\": \"User not found\"}",
+        "status": "PASS"
+    },
+    {
+        "endpoint": "/transactions",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/transactions",
+        "body": "{\"userId\": \"12\"}",
+        "expectedOutput": "{\"message\": [{\"transactionID\": 1, \"senderID\": 12, \"receiverId\": 45, \"amount\": -250.75}, {\"transactionID\": 5, \"senderID\": 90, \"receiverId\": 12, \"amount\": 300.0}, {\"transactionID\": 10, \"senderID\": 89, \"receiverId\": 12, \"amount\": 400.0}]}",
+        "receivedOutput": "{\"message\": [{\"transactionId\": 1, \"senderId\": 12, \"receiverId\": 45, \"amount\": -250.75}, {\"transactionId\": 5, \"senderId\": 90, \"receiverId\": 12, \"amount\": 300}, {\"transactionId\": 10, \"senderId\": 89, \"receiverId\": 12, \"amount\": 400}]}",
+        "status": "FAIL"
+    },
+    {
+        "endpoint": "/transactions",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/transactions",
+        "body": "{\"userId\": \"abc\"}",
+        "expectedOutput": "{\"error\": \"User ID is required\"}",
+        "receivedOutput": "{\"error\": \"User ID is required\"}",
+        "status": "PASS"
+    },
+    {
+        "endpoint": "/transactions",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/transactions",
+        "body": "{\"userId\": \"101\"}",
+        "expectedOutput": "{\"error\": \"User not found\"}",
+        "receivedOutput": "{\"error\": \"User not found\"}",
+        "status": "PASS"
+    },
+    {
+        "endpoint": "/bill",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/bill",
+        "body": "{\"userId\": \"1\"}",
+        "expectedOutput": "{\"message\": \"Your next credit card bill of <amount> is due on <dueDate>\"}",
+        "receivedOutput": "{\"error\": \"No upcoming credit card bill found\"}",
+        "status": "FAIL"
+    },
+    {
+        "endpoint": "/bill",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/bill",
+        "body": "{}",
+        "expectedOutput": "{\"error\": \"User ID is required\"}",
+        "receivedOutput": "{\"error\": \"User ID is required\"}",
+        "status": "PASS"
+    },
+    {
+        "endpoint": "/bill",
+        "method": "POST",
+        "url": "https://cc74-2401-4900-1c0e-b9b-45b6-1b2a-4c34-5714.ngrok-free.app/bill",
+        "body": "{\"userId\": \"101\"}",
+        "expectedOutput": "{\"error\": \"No upcoming credit card bill found\"}",
+        "receivedOutput": "{\"error\": \"No upcoming credit card bill found\"}",
+        "status": "PASS"
+    }
+]
