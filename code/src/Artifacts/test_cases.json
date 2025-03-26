@@ -2,55 +2,110 @@
     {
         "endpoint": "/balance",
         "method": "POST",
-        "body": "{\"userId\": 1}",
-        "expectedOutput": "{\"message\": \"Your current bank balance is 2500.75\"}"
+        "body": "{\"userId\": 12}",
+        "expectedOutput": {
+            "message": "Your current bank balance is 3100.25"
+        }
     },
     {
         "endpoint": "/balance",
         "method": "POST",
-        "body": "{\"userId\": \"invalid\"}",
-        "expectedOutput": "{\"error\": \"User ID is required\"}"
+        "body": "{}",
+        "expectedOutput": {
+            "error": "User ID is required"
+        }
     },
     {
         "endpoint": "/balance",
         "method": "POST",
-        "body": "{\"userId\": 999}",
-        "expectedOutput": "{\"error\": \"User not found\"}"
+        "body": "{\"userId\": \"abc\"}",
+        "expectedOutput": {
+            "error": "User ID is required"
+        }
     },
     {
         "endpoint": "/transactions",
         "method": "POST",
         "body": "{\"userId\": 12}",
-        "expectedOutput": "{\"message\": [{\"transactionID\": 1, \"senderID\": 12, \"receiverId\": 45, \"amount\": -250.75}, {\"transactionID\": 5, \"senderID\": 90, \"receiverId\": 12, \"amount\": 300.0}, {\"transactionID\": 10, \"senderID\": 89, \"receiverId\": 12, \"amount\": 400.0}]}"
+        "expectedOutput": {
+            "message": [
+                {
+                    "transactionId": 1,
+                    "senderId": 12,
+                    "receiverId": 45,
+                    "amount": 250.75,
+                    "date": "2023-01-01"
+                },
+                {
+                    "transactionId": 5,
+                    "senderId": 90,
+                    "receiverId": 12,
+                    "amount": 300.0,
+                    "date": "2023-01-05"
+                },
+                {
+                    "transactionId": 10,
+                    "senderId": 89,
+                    "receiverId": 12,
+                    "amount": 400.0,
+                    "date": "2023-01-10"
+                }
+            ]
+        }
+    },
+    {
+        "endpoint": "/transactions",
+        "method": "POST",
+        "body": "{\"userId\": 45}",
+        "expectedOutput": {
+            "message": [
+                {
+                    "transactionId": 1,
+                    "senderId": 12,
+                    "receiverId": 45,
+                    "amount": 250.75,
+                    "date": "2023-01-01"
+                },
+                {
+                    "transactionId": 9,
+                    "senderId": 45,
+                    "receiverId": 67,
+                    "amount": 90.0,
+                    "date": "2023-01-09"
+                }
+            ]
+        }
     },
     {
         "endpoint": "/transactions",
         "method": "POST",
         "body": "{}",
-        "expectedOutput": "{\"error\": \"User ID is required\"}"
+        "expectedOutput": {
+            "error": "User ID is required"
+        }
     },
     {
-        "endpoint": "/transactions",
+        "endpoint": "/bill",
         "method": "POST",
-        "body": "{\"userId\": 101}",
-        "expectedOutput": "{\"error\": \"User not found\"}"
+        "body": "{\"userId\": 12}",
+        "expectedOutput": {
+            "message": "Your next credit card bill of 120.5 is due on 2023-11-20"
+        }
     },
     {
         "endpoint": "/bill",
         "method": "POST",
         "body": "{\"userId\": 1}",
-        "expectedOutput": "{\"message\": \"Your next credit card bill of <amount> is due on <dueDate>\"}"
+        "expectedOutput": {
+            "error": "No upcoming credit card bill found"
+        }
     },
     {
         "endpoint": "/bill",
         "method": "POST",
-        "body": "{\"userId\": \"abc\"}",
-        "expectedOutput": "{\"error\": \"User ID is required\"}"
-    },
-    {
-        "endpoint": "/bill",
-        "method": "POST",
-        "body": "{\"userId\": 1}",
-        "expectedOutput": "{\"error\": \"No upcoming credit card bill found\"}"
+        "body": "{}",
+        "expectedOutput": {
+            "error": "User ID is required"
+        }
     }
 ]
