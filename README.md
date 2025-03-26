@@ -75,10 +75,12 @@ A Context-Aware Testing System enhances financial application testing by replaci
 
 
 ## ⚙️ What It Does
-Replace-with-Architecture
+![file_2025-03-25_16 52 41 1](https://github.com/user-attachments/assets/178900d9-2866-4b16-bb64-e8704aee4b71)
+
 
 ## 🛠️ How We Built It
-Replace-with-Architecture
+![file_2025-03-25_16 52 41 1](https://github.com/user-attachments/assets/abae209d-ba54-4da0-9bb6-6126ee722c6c)
+
 
 ## 🚧 Challenges We Faced
 - **GitHub Workflow Integration:** Monitoring code changes and processing webhook events.
