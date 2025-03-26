@@ -62,7 +62,7 @@ A Context-Aware Testing System enhances financial application testing by replaci
 ## 🎥 Demo
 🔗 [Live Demo](#) (if applicable)  
 📹 [Video Demo](#) (if applicable) 
-🖼️ Presentation:
+🖼️ [Presentation](#)
 [Context-aware-Testing-System-Leveraging-Generative-AI.pptx](https://github.com/user-attachments/files/19468477/Context-aware-Testing-System-Leveraging-Generative-AI.pptx)
 
 
