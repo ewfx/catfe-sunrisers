@@ -61,10 +61,11 @@ A Context-Aware Testing System enhances financial application testing by replaci
 
 ## 🎥 Demo
 🔗 [Live Demo](#) (if applicable)  
-📹 [Video Demo](#) (if applicable)  
-🖼️ Screenshots:
+📹 [Video Demo](#) (if applicable) 
+🖼️ Presentation:
+[Context-aware-Testing-System-Leveraging-Generative-AI.pptx](https://github.com/user-attachments/files/19468477/Context-aware-Testing-System-Leveraging-Generative-AI.pptx)
 
-![Screenshot 1](link-to-image)
+
 
 ## 💡 Inspiration
 - Traditional testing is manual and lacks adaptability; AI-driven automation improves efficiency and reduces development cycles.
