@@ -41,7 +41,7 @@ python web_app_main.py
 ```
 
 
-# 🚀 Project Name
+# 🚀 Context-aware Testing System Leveraging Generative AI
 
 ## 📌 Table of Contents
 - [Introduction](#introduction)
