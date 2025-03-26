@@ -17,9 +17,8 @@
 A Context-Aware Testing System enhances financial application testing by replacing static mock tools with an automated approach leveraging Generative AI. We aim to drastically improve efficiencies and ensure an application-agnostic, scalable solution for financial ecosystems. Our solution uses a multi-agent framework/Agentic AI that monitors GitHub for new pull requests, analyzes code changes, generates relevant test cases, executes them, and reports results. 
 
 ## 🎥 Demo
-🔗 [Live Demo](#) (if applicable)  
-📹 [Video Demo](#) (if applicable) <br/>
-🖼️ [Presentation](#) <br/>
+📹 [Video Demo](artifacts/demo/Final_Demo_Video_Subs_720p.mp4)  <br/>
+🖼️ [Presentation](artifacts/demo/Context-aware-Testing-System-Leveraging-Generative-AI.pptx) <br/>
       [Context-aware-Testing-System-Leveraging-Generative-AI.pptx](https://github.com/user-attachments/files/19468477/Context-aware-Testing-System-Leveraging-Generative-AI.pptx)
 
 
