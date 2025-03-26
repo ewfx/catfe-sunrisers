@@ -32,11 +32,23 @@ A Context-Aware Testing System enhances financial application testing by replaci
 
 
 ## ⚙️ What It Does
-![file_2025-03-25_16 52 41 1](https://github.com/user-attachments/assets/178900d9-2866-4b16-bb64-e8704aee4b71)
+The typical workflow of the system is as follows:
+
+1.  A developer creates a **Pull Request** in the **GitHub Repo** with changes to the application code or data.
+2.  **GitHub Webhooks** are triggered by the new Pull Request.
+3.  The triggered workflow initiates the **Agentic AI Powered Context Aware Testing System**.
+4.  The **Context Extractor** fetches the PR details, reads the **Existing Context**, and uses an LLM to summarize the changes and update the **Existing Context**.
+5.  The **Data Extractor** checks for changes in the data directory within the PR. If changes are found, it extracts the latest mock data.
+6.  The **Testcase Generator** reads the updated **Existing Context** and the extracted data (if any) and prompts an LLM to generate relevant test cases based on the detected changes.
+7.  The **Testcase Executor** reads the generated test cases and executes them by making API calls to the **Dummy App**, capturing the responses.
+8.  The **Testcase Execution Reporter** receives the execution results and generates a detailed **Report**, likely in PDF format.
+
 
 
 ## 🛠️ How We Built It
-![file_2025-03-25_16 52 41 1](https://github.com/user-attachments/assets/abae209d-ba54-4da0-9bb6-6126ee722c6c)
+
+![Recording of architeture](https://github.com/user-attachments/assets/e49e7633-c199-41f8-931f-69310ef6c188)
+
 
 
 ## 🚧 Challenges We Faced
