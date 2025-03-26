@@ -2,6 +2,8 @@
 
 This document outlines the architecture of a context-aware testing system designed to automatically detect changes in an application based on GitHub Pull Requests and generate and execute relevant test cases. The system leverages an Agentic AI-powered approach with several key components working in concert.
 
+![image](https://github.com/user-attachments/assets/f5fce249-3f92-42ab-a239-eb08e6f17b79)
+
 ## Overview
 
 The core idea is to monitor a GitHub repository for new Pull Requests. Upon detection, the system analyzes the changes introduced by the PR, understands the context of these changes in relation to the existing application and its testing context, generates new test cases accordingly, executes them against a sample application, and finally reports the execution results.
